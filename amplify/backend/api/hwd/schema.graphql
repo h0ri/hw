@@ -1,0 +1,12 @@
+type Plan @model @key(fields: ["content", "owner"])  @auth(rules: [{allow: owner}]) {
+  content: String!
+  type: String!
+  name: String!
+  owner: String!
+  person: Person @connection(fields: ["name"])
+}
+
+type Person @model @key(fields: ["name"]) @auth(rules: [{allow: owner}]) {
+  name: String!
+  color: String!
+}
